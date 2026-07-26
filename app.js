@@ -2,6 +2,7 @@ require('dotenv').config(); // Load .env variables
 const express = require('express');
 const connectDB = require('./config/db.js'); // Import DB connection
 const Todo = require('./models/todoModel.js'); // Import Todo model
+const path = require('path'); // Import path module for serving static files
 
 // import cors for cross-origin requests
 // const cors = require('cors');
@@ -12,7 +13,7 @@ const errorHandler = require('./middlewares/errorHandler.js');
 
 
 const app = express();
-app.use(express.static("public"));//use path to serve static files from the public folder
+app.use(express.static(path.join(__dirname, 'public')));//use path to serve static files from the public folder
 app.use(express.json()); // Parse JSON bodies
 app.use(logger);//use logger middleware
 connectDB(); //Connect to MongoDB database
@@ -21,8 +22,8 @@ connectDB(); //Connect to MongoDB database
 // GET All – Read
 app.get('/todos',async (req, res) => {
   try {
-    const todos = await Todo.find();
-    res.status(200).json(todos);
+    const todos = await Todo.find();// Fetch all todos from the database
+    res.status(200).json(todos); // Echo back todo from the db
   } catch (error) {
     next(error);
   }
@@ -36,7 +37,7 @@ app.post('/todos',validateCreateTodo, async (req, res,next) => {
         task, 
         completed });
   await newTodo.save(); // Save to DB
-  res.status(201).json(newTodo); // Echo back the new todo
+  res.status(201).json(newTodo); // Echo back the new todo from the db
   } catch (error) {
     next(error);
   }
