@@ -1,4 +1,5 @@
-const API = "http://localhost:5000/todos";
+// const API = "http://localhost:5000/todos";
+const API = "https://week3-crud-todo-api-f24x.onrender.com/todos";
 
 const list = document.getElementById("todoList");
 const form = document.getElementById("todoForm");
