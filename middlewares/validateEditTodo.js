@@ -6,6 +6,7 @@ const Joi = require('joi');
 //use joi to validate the request body
 const validateEditTodo = (req, res, next) => {
   const schema = Joi.object({
+      task: Joi.string().min(3).max(200).optional,
     completed: Joi.boolean().required(false)
   });
   const { error } = schema.validate(req.body);
@@ -17,3 +18,4 @@ const validateEditTodo = (req, res, next) => {
 
 
 module.exports = validateEditTodo;
+

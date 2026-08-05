@@ -1,39 +1,131 @@
-body{
-    font-family:Arial;
-    width:600px;
-    margin:40px auto;
+body {
+    font-family: Arial, sans-serif;
+    background: rgb(5, 205, 255);
+    max-width: 650px;
+    width: 90%;
+    margin: 50px auto;
+    padding: 20px;
 }
 
-h1{
-    text-align:center;
+h1 {
+    text-align: center;
+    color: #1e3a8a;
+    margin-bottom: 30px;
 }
 
-form{
-    display:flex;
-    gap:10px;
-    margin-bottom:20px;
+form {
+    display: flex;
+    gap: 10px;
+    background: rgb(225, 225, 255);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    margin-bottom: 25px;
 }
 
-input{
-    flex:1;
-    padding:10px;
+input {
+    flex: 1;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 16px;
 }
 
-button{
-    padding:10px;
-    cursor:pointer;
+input:focus {
+    outline: none;
+    border-color: #2563eb;
 }
 
-li{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    border:1px solid #ddd;
-    padding:10px;
-    margin:10px 0;
+button {
+    padding: 12px 18px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 15px;
+    color: white;
 }
 
-.completed{
-    text-decoration:line-through;
-    color:gray;
+form button {
+    background-color:green;
+}
+
+form button:hover {
+    background-color: #1d4ed8;
+}
+
+ul {
+    padding: 0;
+}
+
+li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: white;
+    padding: 15px;
+    margin: 12px 0;
+    border-radius: 10px;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+    list-style: none;
+}
+
+li span {
+    flex: 1;
+    font-size: 17px;
+    color: #333;
+}
+
+li div {
+    display: flex;
+    gap: 8px;
+}
+
+ .complete {
+    background-color: #2563eb;
+}
+
+ .complete:hover {
+    background-color: #1d4ed8;
+}
+
+ .delete {
+    background-color: #dc2626;
+}
+
+.delete:hover {
+    background-color: #b91c1c;
+}
+
+.undo {
+    background-color: #16a34a;
+}
+
+ .undo:hover {
+    background-color: #15803d;
+}
+
+
+span.completed {
+    text-decoration: line-through;
+    
+}
+
+@media (max-width: 600px) {
+    form {
+        flex-direction: column;
+    }
+
+    form button {
+        width: 100%;
+    }
+
+    li {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    li div {
+        width: 100%;
+        justify-content: center;
+    }
 }

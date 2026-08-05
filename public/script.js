@@ -1,6 +1,10 @@
-const API = "https://week3-crud-todo-api-f24x.onrender.com/todos";
+
+ const API = "https://week3-crud-todo-api-f24x.onrender.com/todos";
+
+// const API = "http://localhost:5000/todos"; // Use this for local development
 
 const list = document.getElementById("todoList");
+
 const form = document.getElementById("todoForm");
 
 async function loadTodos() {
@@ -8,7 +12,6 @@ async function loadTodos() {
     const todos = await res.json();
 
     list.innerHTML = "";
-
     todos.forEach(todo => {
         const li = document.createElement("li");
 
@@ -17,18 +20,22 @@ async function loadTodos() {
         }
 
         li.innerHTML = `
-            <span>${todo.task}</span>
+    <span class="${todo.completed ? "completed" : ""}">
+        ${todo.task}
+    </span>
 
-            <div>
-                <button onclick="toggleTodo('${todo._id}', ${todo.completed})">
-                    ${todo.completed ? "Undo" : "Complete"}
-                </button>
+    <div>
+        <button class="${todo.completed ? "undo" : "complete"}"
+            onclick="toggleTodo('${todo._id}', ${todo.completed})">
+            ${todo.completed ? "Undo" : "Complete"}
+        </button>
 
-                <button onclick="deleteTodo('${todo._id}')">
-                    Delete
-                </button>
-            </div>
-        `;
+        <button class="delete"
+            onclick="deleteTodo('${todo._id}')">
+            Delete
+        </button>
+    </div>
+`;
 
         list.appendChild(li);
     });
